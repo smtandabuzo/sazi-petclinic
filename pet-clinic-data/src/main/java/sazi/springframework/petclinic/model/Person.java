@@ -1,4 +1,4 @@
-package sazi.springframework.sazipetclinic.model;
+package sazi.springframework.petclinic.model;
 
 public class Person {
     private String firstName;
