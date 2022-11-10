@@ -1,11 +1,12 @@
 package sazi.springframework.petclinic.services.map;
 
 import sazi.springframework.petclinic.model.Vet;
-import sazi.springframework.petclinic.services.CrudService;
+import sazi.springframework.petclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
+
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
