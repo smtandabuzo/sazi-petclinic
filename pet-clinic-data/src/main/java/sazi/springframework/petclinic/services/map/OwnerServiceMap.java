@@ -1,10 +1,11 @@
 package sazi.springframework.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import sazi.springframework.petclinic.model.Owner;
 import sazi.springframework.petclinic.services.OwnerService;
 
 import java.util.Set;
-
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override

@@ -1,10 +1,11 @@
 package sazi.springframework.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import sazi.springframework.petclinic.model.Pet;
 import sazi.springframework.petclinic.services.PetService;
 
 import java.util.Set;
-
+@Service
 public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
