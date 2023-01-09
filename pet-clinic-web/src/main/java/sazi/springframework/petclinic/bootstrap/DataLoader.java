@@ -3,10 +3,7 @@ package sazi.springframework.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import sazi.springframework.petclinic.model.*;
-import sazi.springframework.petclinic.services.OwnerService;
-import sazi.springframework.petclinic.services.PetTypeService;
-import sazi.springframework.petclinic.services.SpecialtyService;
-import sazi.springframework.petclinic.services.VetService;
+import sazi.springframework.petclinic.services.*;
 
 import java.time.LocalDate;
 
@@ -17,12 +14,15 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
 
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -76,13 +76,23 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("123 Brickerel");
         owner2.setCity("Miami");
         owner2.setTelephone("12355353553");
+        owner2.setId(1L);
 
         Pet fionasCat = new Pet();
         fionasCat.setPetType(savedCatPetType);
         fionasCat.setOwner(owner2);
         fionasCat.setBirthDate(LocalDate.now());
         fionasCat.setName("David");
+        fionasCat.setId(1L);
         owner2.getPets().add(fionasCat);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setLocalDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+        catVisit.setId(1L);
+
+        visitService.save(catVisit);
 
         ownerService.save(owner2);
 
