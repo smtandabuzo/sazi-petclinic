@@ -13,18 +13,18 @@ import java.time.LocalDate;
 @Table(name = "visits")
 public class Visit extends BaseEntity {
     @Column(name = "date")
-    private LocalDate localDate;
+    private LocalDate date;
     @Column(name = "description")
     private String description;
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
